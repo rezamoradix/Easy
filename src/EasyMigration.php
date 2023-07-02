@@ -69,12 +69,23 @@ trait EasyMigration
     ]);
   }
 
+  public function float(string $fieldName, bool $nullable = false)
+  {
+    $this->_addField(
+      $fieldName,
+      [
+        'type' => 'DOUBLE',
+        'null' => $nullable
+      ]
+    );
+  }
+
   public function double(string $fieldName, bool $nullable = false)
   {
     $this->_addField(
       $fieldName,
       [
-        'type' => 'double',
+        'type' => 'DOUBLE',
         'null' => $nullable
       ]
     );
