@@ -74,7 +74,7 @@ trait EasyMigration
     $this->_addField(
       $fieldName,
       [
-        'type' => 'DOUBLE',
+        'type' => 'FLOAT',
         'null' => $nullable
       ]
     );
