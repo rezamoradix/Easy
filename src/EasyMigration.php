@@ -69,6 +69,17 @@ trait EasyMigration
     ]);
   }
 
+  public function double(string $fieldName, bool $nullable = false)
+  {
+    $this->_addField(
+      $fieldName,
+      [
+        'type' => 'double',
+        'null' => $nullable
+      ]
+    );
+  }
+
   public function intWithFK(string $fieldName, bool $nullable = false, string $foreignField, string $foreignTable)
   {
     $this->int($fieldName, $nullable);
@@ -113,5 +124,13 @@ trait EasyMigration
   public function dropTable()
   {
     $this->forge->dropTable($this->tableName);
+  }
+
+  // Private methods
+  private function _addField($fieldName, $attributes)
+  {
+    $this->forge->addField([
+      $fieldName => $attributes
+    ]);
   }
 }
