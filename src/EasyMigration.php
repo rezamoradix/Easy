@@ -69,6 +69,16 @@ trait EasyMigration
     ]);
   }
 
+  public function tinyint(string $fieldName, bool $nullable = false)
+  {
+    $this->forge->addField([
+      $fieldName => [
+        'type' => 'TINYINT',
+        'null' => $nullable
+      ]
+    ]);
+  }
+
   public function float(string $fieldName, bool $nullable = false)
   {
     $this->_addField(
