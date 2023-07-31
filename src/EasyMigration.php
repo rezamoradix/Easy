@@ -2,6 +2,7 @@
 
 namespace Rey\Easy;
 
+use CodeIgniter\Database\Forge;
 use Rey\Easy\Lib\RawSql;
 
 /**
@@ -137,6 +138,29 @@ trait EasyMigration
       ], $options)
     ]);
   }
+
+
+  public function modifyAddField(string $tableName, array $field)
+  {
+    $this->getDbForge()->addColumn($tableName, $field);
+  }
+
+  public function modifyEditField(string $tableName, array $field)
+  {
+    $this->getDbForge()->modifyColumn($tableName, $field);
+  }
+
+  public function modifyDropField(string $tableName, string $fieldName)
+  {
+    $this->getDbForge()->dropColumn($tableName, $fieldName);
+  }
+
+  
+  public function getDbForge(): Forge
+  {
+    return $this->forge;
+  }
+
   public function createTable()
   {
     $this->forge->createTable($this->tableName);

@@ -11,5 +11,8 @@
             "email": "rezamoradix@gmail.com"
         }
     ],
-    "require": {}
+    "require": {},
+    "require-dev": {
+        "codeigniter4/framework": "^4.0"
+    }
 }
