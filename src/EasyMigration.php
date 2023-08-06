@@ -3,7 +3,7 @@
 namespace Rey\Easy;
 
 use CodeIgniter\Database\Forge;
-use Rey\Easy\Lib\RawSql;
+use CodeIgniter\Database\RawSql;
 
 /**
  * Adds methods to create, modift tables easily
