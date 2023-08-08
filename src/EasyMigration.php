@@ -13,12 +13,20 @@ trait EasyMigration
   public function id()
   {
     $this->db->disableForeignKeyChecks();
-    $this->forge->addField('id');
+    $this->forge->addField([
+      'id' => [
+        'type' => 'int',
+        'constraint' => 11,
+        'unsigned' => true,
+        'auto_increment' => true
+      ],
+    ]);
   }
 
   public function nanoid()
   {
     $this->string('nanoid', false);
+    $this->getDbForge()->addKey('nanoid');
   }
 
   public function timestamps()
@@ -155,7 +163,7 @@ trait EasyMigration
     $this->getDbForge()->dropColumn($tableName, $fieldName);
   }
 
-  
+
   public function getDbForge(): Forge
   {
     return $this->forge;
