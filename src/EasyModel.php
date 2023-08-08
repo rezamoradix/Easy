@@ -14,6 +14,11 @@ trait EasyModel
         return self::$instance ?? (self::$instance = new self);
     }
 
+    public static function i()
+    {
+        return self::instance();
+    }
+
     // static methods
     public static function fetch($id)
     {
@@ -69,7 +74,12 @@ trait EasyModel
 
     public function ofUser($user_id)
     {
-        return $this->where('user_id', $user_id)->get()->getResult($this->returnType);
+        return $this->where('user_id', $user_id)->find();
+    }
+
+    public function ofUserLatest($user_id)
+    {
+        return $this->where('user_id', $user_id)->latest()->find();
     }
 
     public function latest()
