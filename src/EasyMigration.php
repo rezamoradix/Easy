@@ -21,6 +21,7 @@ trait EasyMigration
         'auto_increment' => true
       ],
     ]);
+    $this->getDbForge()->addPrimaryKey('id');
   }
 
   public function nanoid()
