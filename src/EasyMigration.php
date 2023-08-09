@@ -78,6 +78,17 @@ trait EasyMigration
     ]);
   }
 
+  public function unsignedInt(string $fieldName, bool $nullable = false)
+  {
+    $this->forge->addField([
+      $fieldName => [
+        'type' => 'int',
+        'null' => $nullable,
+        'unsigned' => true,
+      ]
+    ]);
+  }
+
   public function tinyint(string $fieldName, bool $nullable = false)
   {
     $this->forge->addField([
@@ -112,7 +123,7 @@ trait EasyMigration
 
   public function intWithFK(string $fieldName, bool $nullable = false, string $foreignField, string $foreignTable)
   {
-    $this->int($fieldName, $nullable);
+    $this->unsignedInt($fieldName, $nullable);
     $this->forge->addForeignKey($fieldName, $foreignTable,  $foreignField);
   }
 
