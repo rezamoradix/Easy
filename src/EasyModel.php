@@ -9,11 +9,21 @@ trait EasyModel
 {
     protected static $instance = null;
     
+    /**
+     * instance
+     *
+     * @return Model
+     */
     public static function instance()
     {
         return self::$instance ?? (self::$instance = new self);
     }
 
+    /**
+     * short instance
+     *
+     * @return Model
+     */
     public static function i()
     {
         return self::instance();
