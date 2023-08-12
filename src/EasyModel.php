@@ -12,7 +12,7 @@ trait EasyModel
     /**
      * instance
      *
-     * @return Model
+     * @return static
      */
     public static function instance()
     {
@@ -22,7 +22,7 @@ trait EasyModel
     /**
      * short instance
      *
-     * @return Model
+     * @return static
      */
     public static function i()
     {
