@@ -149,6 +149,12 @@ trait EasyMigration
     ]);
   }
 
+  // Alias
+  public function boolean(string $fieldName, bool $nullable = false, bool $defaultValue = false)
+  {
+    return $this->bool($fieldName, $nullable, $defaultValue);
+  }
+
   public function datetime(string $fieldName, bool $nullable = false, array $options = [])
   {
     $this->forge->addField([
