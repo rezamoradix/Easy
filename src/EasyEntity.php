@@ -24,4 +24,12 @@ trait EasyEntity
         if (!isset($this->attributes[$name])) $this->attributes[$name] = $className::fetch($this->$key);
         return $this->attributes[$name];
     }
+
+    public function hasMany($className, $key = null)
+    {
+        $name = (new ReflectionClass($className))->getShortName();
+        $key ??= $name . '_id';
+        if (!isset($this->attributes[$name])) $this->attributes[$name] = $className::i()->where($key, $this->id)->find();
+        return $this->attributes[$name];
+    }
 }
