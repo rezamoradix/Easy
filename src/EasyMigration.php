@@ -122,10 +122,10 @@ trait EasyMigration
     );
   }
 
-  public function intWithFK(string $fieldName, bool $nullable = false, string $foreignField, string $foreignTable)
+  public function intWithFK(string $fieldName, bool $nullable = false, string $foreignField, string $foreignTable, string $onUpdate = '', string $onDelete = '')
   {
     $this->unsignedInt($fieldName, $nullable);
-    $this->forge->addForeignKey($fieldName, $foreignTable,  $foreignField);
+    $this->getDbForge()->addForeignKey($fieldName, $foreignTable, $foreignField, $onUpdate, $onDelete);
   }
 
   public function userId(bool $nullable = false)
