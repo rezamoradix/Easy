@@ -53,7 +53,7 @@ trait EasyMigration
     $this->forge->addField([
       $fieldName => [
         'type' => 'varchar',
-        'constraint' => 190,
+        'constraint' => 255,
         'null' => $nullable
       ]
     ]);
